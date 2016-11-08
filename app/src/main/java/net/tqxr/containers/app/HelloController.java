@@ -11,4 +11,11 @@ public class HelloController {
         return "\n**** Greetings from Spring Boot! ****\n\n";
     }
 
+    @RequestMapping("/message")
+    public String message() {
+
+        return "{\"message\":\"HELLO THIS IS THE MESSAGE\", \"date\":\"2016\"}";
+
+    }
+
 }
