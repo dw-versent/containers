@@ -1,7 +1,15 @@
 package net.tqxr.containers.client;
 
-/**
- * Created by david on 9/11/16.
- */
 public class MessageBody {
+
+    public String message;
+
+    public String date;
+
+
+    @Override
+    public String toString() {
+        return String.format("MESSAGE: '%s'\nDATE: %s",
+                message, date);
+    }
 }
