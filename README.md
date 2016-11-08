@@ -27,6 +27,18 @@ ___________________  ____  _____________
 
 ## Building and Running
 
+## Preparing our docker world
+
+For some reason docker-compose will not automatically pull down images for us
+so we need to run `docker-compose pull` once in order to get the base images we
+need.
+
+*Windows is of course causing problems too!*
+Make sure you set docker for windows up so that the drive you have cloned this
+repo to (in my case `c:`) is selected as a shared drive in the docker control
+applet (the thing you click from the system tray to change settings etc).
+
+
 ### To build:
 From the root folder, use `mvn package`.
 This will build the jars which are used when running the project.
