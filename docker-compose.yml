@@ -1,19 +1,29 @@
 version: '2'
 services:
-  web-app:
+  app:
     image: jre8
+    networks:
+      some-network:
+        aliases:
+        - web-app
     container_name: my-web-app
     build: ./app
     ports:
      - "8080:8080"
     volumes:
-     - ./app/target:/code
-    command: java -jar -Djava.security.egd=file:/dev/./urandom ./code/app-0.0.1-SNAPSHOT.jar
-  web-client:
+     - ./app/target:/bin
+    command: java -jar -Djava.security.egd=file:/dev/./urandom ./bin/app-0.0.1-SNAPSHOT.jar
+  client:
     image: jre8
+    depends_on:
+    - app
     container_name: my-web-client
+    networks:
+     - some-network
     build: ./client
     volumes:
-     - ./client/target:/code
-    command: java -jar ./code/client-0.0.1-SNAPSHOT.jar
+     - ./client/target:/bin
+    command: java -jar ./bin/client-0.0.1-SNAPSHOT.jar
 
+networks:
+  some-network:
