@@ -24,3 +24,14 @@ ___________________  ____  _____________
   |____|   \_____\ \_/___/\  \ |____|_  /
                   \__>     \_/        \/ 
 ```
+
+## Building and Running
+
+### To build:
+From the root folder, use `mvn package`.
+This will build the jars which are used when running the project.
+
+### To run it:
+From the root folder, use `docker-compose up`. This will run both images and
+you will see the server starting, then after it has come up the client will 
+continue to start.
