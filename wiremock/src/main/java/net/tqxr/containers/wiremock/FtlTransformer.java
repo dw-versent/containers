@@ -35,11 +35,18 @@ public class FtlTransformer extends ResponseDefinitionTransformer {
             Configuration configuration = new Configuration(Configuration.VERSION_2_3_25);
 
             if (!responseDefinition.getBodyFileName().isEmpty()) {
-                System.out.println("BODY FILE NAME: " + responseDefinition.getBodyFileName());
+
+                System.out.println(String.format(
+                        "BODY FILE NAME: %s",
+                        responseDefinition.getBodyFileName()
+                ));
+
                 body = new String(Files.readAllBytes(
                         FileSystems.getDefault().getPath(
-                                Paths.get(files.getPath().toString(),
-                                responseDefinition.getBodyFileName()).toString()
+                                Paths.get(
+                                        files.getPath(),
+                                        responseDefinition.getBodyFileName()
+                                ).toString()
                         )));
             }
 
@@ -59,10 +66,18 @@ public class FtlTransformer extends ResponseDefinitionTransformer {
                     .withBody(body)
                     .build();
         } catch (Exception ignored) {
+
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.append(ignored.getMessage());
+            stringBuilder.append("\n");
+            for (StackTraceElement element : ignored.getStackTrace()) {
+                stringBuilder.append(String.format("%s\n", element.toString()));
+            }
+            body = stringBuilder.toString();
+
         }
 
         return new ResponseDefinitionBuilder()
-//                .withHeader("MyHeader", "Transformed")
                 .withHeaders(responseDefinition.getHeaders())
                 .withStatus(200)
                 .withBody(body)

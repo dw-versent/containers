@@ -19,23 +19,7 @@ public class DemoApplication {
 //        }
 
         SpringApplication.run(DemoApplication.class, args);
-
-//        RestTemplate restTemplate = new RestTemplate();
-//        MessageBody messageBody = restTemplate.getForObject("http://app:8080/message", MessageBody.class);
-//
-//
-//        System.out.println("_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
-//
-//
-//        System.out.println(
-//                String.format("%s", messageBody)
-//        );
-//
-//
-//        System.out.println("\n\n_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
-
         WireMockProof wmp = new WireMockProof();
-
         wmp.hitWireMock();
 
     }
