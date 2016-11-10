@@ -9,29 +9,34 @@ public class DemoApplication {
 
     public static void main(String[] args) {
 
-        int serverChecks = 0;
-        while (!ServerCheck.serverListening("app", 8080) && ++serverChecks < 100) {
-            try {
-                Thread.sleep(1000L);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
+//        int serverChecks = 0;
+//        while (!ServerCheck.serverListening("app", 8080) && ++serverChecks < 100) {
+//            try {
+//                Thread.sleep(1000L);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }
 
         SpringApplication.run(DemoApplication.class, args);
 
-        RestTemplate restTemplate = new RestTemplate();
-        MessageBody messageBody = restTemplate.getForObject("http://app:8080/message", MessageBody.class);
+//        RestTemplate restTemplate = new RestTemplate();
+//        MessageBody messageBody = restTemplate.getForObject("http://app:8080/message", MessageBody.class);
+//
+//
+//        System.out.println("_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
+//
+//
+//        System.out.println(
+//                String.format("%s", messageBody)
+//        );
+//
+//
+//        System.out.println("\n\n_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
 
+        WireMockProof wmp = new WireMockProof();
 
-        System.out.println("_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
+        wmp.hitWireMock();
 
-
-        System.out.println(
-                String.format("%s", messageBody)
-        );
-
-
-        System.out.println("\n\n_*_*_*__**__*_*_*_*_*_**__**__*_*_**__*_**__**_*_*_***\n\n");
     }
 }
