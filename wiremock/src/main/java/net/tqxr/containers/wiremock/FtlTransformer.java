@@ -34,7 +34,9 @@ public class FtlTransformer extends ResponseDefinitionTransformer {
         try {
             Configuration configuration = new Configuration(Configuration.VERSION_2_3_25);
 
-            if (!responseDefinition.getBodyFileName().isEmpty()) {
+            String bodyFileName = responseDefinition.getBodyFileName();
+            
+            if (null != bodyFileName) {
 
                 System.out.println(String.format(
                         "BODY FILE NAME: %s",
